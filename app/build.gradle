@@ -1,0 +1,161 @@
+buildscript {
+    repositories {
+        google()
+        maven { url 'https://maven.google.com' }
+    }
+}
+
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    //hilt
+    id 'dagger.hilt.android.plugin'
+    //safe-args
+    id 'androidx.navigation.safeargs.kotlin'
+}
+
+repositories {
+    mavenCentral()
+    google()
+}
+
+android {
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_11
+    }
+    testOptions {
+        unitTests {
+            returnDefaultValues = true
+            includeAndroidResources = true
+        }
+    }
+    buildFeatures {
+        viewBinding true
+    }
+    compileSdkVersion 33
+    buildToolsVersion "30.0.3"
+    defaultConfig {
+        applicationId "app.mhp.got"
+        minSdkVersion 21
+        targetSdkVersion 33
+        versionName "1.0"
+        versionCode 1
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            debuggable true
+        }
+    }
+    testBuildType "debug"
+    testOptions {
+        unitTests.all {
+            useJUnit()
+        }
+    }
+}
+
+configurations {
+    devDebugImplementation.exclude group: "junit", module: "junit"
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.13.2'
+
+    def retrofit_version = "2.9.0"
+    def lifecycle_version = "2.5.1"
+    def moshi_version = "1.13.0"
+    def hilt_navigation = "1.0.0"
+    def coroutines_version = "1.6.4"
+    def okhttp_logger_version = "4.10.0"
+
+    //core android libraries
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test:runner:1.4.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0-alpha07'
+    androidTestImplementation 'androidx.test:rules:1.4.1-beta01'
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.4.0'
+    androidTestImplementation "androidx.test.espresso:espresso-accessibility:3.4.0"
+    androidTestImplementation "org.hamcrest:hamcrest:2.2"
+
+    //android-core testing
+    androidTestImplementation "androidx.arch.core:core-testing:2.1.0"
+    implementation "androidx.arch.core:core-testing:2.1.0"
+
+    //swipe refresh layout
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+
+    //material design components
+    implementation 'com.google.android.material:material:1.6.1'
+
+    //kotlin reflect
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+
+    //lifecycle
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-service:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+
+    //retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-scalars:2.5.0"
+
+    //http requests logging/testing libraries
+    implementation("com.squareup.okhttp3:logging-interceptor:$okhttp_logger_version")
+    testImplementation("com.squareup.okhttp3:mockwebserver:$okhttp_logger_version")
+
+    //coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
+
+    //hilt
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+    implementation "androidx.hilt:hilt-navigation:$hilt_navigation"
+    implementation "androidx.hilt:hilt-navigation-fragment:$hilt_navigation"
+    kapt "androidx.hilt:hilt-compiler:$hilt_navigation"
+    androidTestAnnotationProcessor "com.google.dagger:hilt-android-compiler:$hilt_version"
+
+    //navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    //kotlin-fragment-ktx
+    implementation 'androidx.fragment:fragment-ktx:1.5.3'
+
+    //cardview
+    implementation "androidx.cardview:cardview:1.0.0"
+
+    //moshi for json parsing
+    implementation "com.squareup.moshi:moshi:$moshi_version"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshi_version"
+
+    //calligraphy
+    implementation 'io.github.inflationx:calligraphy3:3.1.1'
+    implementation 'io.github.inflationx:viewpump:2.0.3'
+
+    //splashscreen for Android 12+
+    implementation 'androidx.core:core-splashscreen:1.0.0'
+}
+

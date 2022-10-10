@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">GOT Houses</string>
+    <string name="json_parsing_failed">Unexpected data returned.</string>
+    <string name="no_batteries">Houses Couldn\'t Be Loaded at the Moment!</string>
+    <string name="server_unreachable">Server unreachable. Please try again later.</string>
+    <string name="server_error">Server error. Please try again later.</string>
+    <string name="network_error">Network error</string>
+    <string name="not_available">What you requested is not available</string>
+    <string name="error_encountered">Error encountered</string>
+    <string name="unknown_error_encountered">Unknown error encountered</string>
+    <string name="fetching_houses">Fetching houses…\nPlease Wait…</string>
+    <string name="not_connected">You\'re not connected!</string>
+    <string name="end_of_list">Whew! You\'ve reached the end</string>
+    <string name="loading_more">Loading…</string>
+    <string name="pull_down_to_refresh">No information found at this time.\nPull down to refresh</string>
+    <string name="name">Name</string>
+    <string name="region">Region</string>
+    <string name="words">Words</string>
+    <string name="coat_of_arms">Coat of Arms</string>
+    <string name="titles">Titles</string>
+    <string name="seats">Seats</string>
+    <string name="current_lord">Current Lord</string>
+    <string name="heir">Heir</string>
+    <string name="overlord">Overlord</string>
+    <string name="ancestral_weapons">Ancestral Weapons</string>
+    <string name="sworn_members">Sworn Members</string>
+</resources>
