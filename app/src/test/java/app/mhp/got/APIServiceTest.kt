@@ -36,7 +36,7 @@ class APIServiceTest {
             .writeTimeout(5, TimeUnit.SECONDS)
 
         apiService = Retrofit.Builder()
-            .baseUrl("http://localhost:8080/")
+            .baseUrl("http://localhost/")
             .addConverterFactory(ScalarsConverterFactory.create())
             .addCallAdapterFactory(CallAdapterFactory(null))
             .addConverterFactory(MoshiConverterFactory.create())

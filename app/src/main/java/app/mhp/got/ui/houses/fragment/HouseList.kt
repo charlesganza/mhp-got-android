@@ -49,7 +49,7 @@ class HouseList : Fragment() {
             houseViewModel.getHouses(refresh = true)
         }
 
-        lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             houseViewModel.housesResponse.collect { response ->
                 binding.noInformationFound.hideView()
                 housesListAdapter.removeProgressBar()

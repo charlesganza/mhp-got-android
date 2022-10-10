@@ -106,8 +106,6 @@ class HousesListAdapter(val context: Context, val houseList: MutableList<Any>) :
 
         houseList.addAll(houses)
         notifyItemRangeInserted(startIndex, houses.size)
-
-        Log.e("called", "${houses.size}")
     }
 
     fun clear(){
