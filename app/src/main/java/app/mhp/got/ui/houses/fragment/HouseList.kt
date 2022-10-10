@@ -45,8 +45,8 @@ class HouseList : Fragment() {
         initHousesList()
 
         binding.refreshHouses.setOnRefreshListener {
-            houseViewModel.getHouses(refresh = true)
             housesListAdapter.clear()
+            houseViewModel.getHouses(refresh = true)
         }
 
         lifecycleScope.launch {

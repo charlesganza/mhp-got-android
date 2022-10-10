@@ -5,9 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RelativeLayout
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import app.mhp.got.R
 import app.mhp.got.ui.houses.model.House
@@ -108,11 +106,14 @@ class HousesListAdapter(val context: Context, val houseList: MutableList<Any>) :
 
         houseList.addAll(houses)
         notifyItemRangeInserted(startIndex, houses.size)
+
+        Log.e("called", "${houses.size}")
     }
 
     fun clear(){
+        val size = houseList.size
         houseList.clear()
-        notifyDataSetChanged()
+        notifyItemRangeRemoved(0, size)
     }
 
     fun addBottomProgressBar(){
